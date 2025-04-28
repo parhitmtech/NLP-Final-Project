@@ -47,6 +47,7 @@ def train_model(X_train, y_train):
     return clf
 
 # ====== LoRA Adapter + Base Model Part ======
+# PLEASE CHANGE THE ADAPTER PATHS AS PER YOUR SOL DESKTOP
 adapters = {
     "gsm8k": "/home/pmathu14/Transformer Model/finetuned-llama-gsm8k-lora/",
     "hhh_alignment": "/home/pmathu14/Transformer Model/finetuned-llama-hhh-lora/",
@@ -158,7 +159,7 @@ def main():
 
     # ====== Predict on test_data_student.json ======
     print("Running predictions on test_data_student.json...")
-    with open("test_data_student.json", "r") as f:
+    with open("test_data_student.json", "r") as f: # PLEASE OPEN YOUR RESPECTIVE NUMBERED FILE (eg: test_data_student_2.json)
         questions = json.load(f)
 
     results = []
@@ -167,7 +168,7 @@ def main():
         answer = get_prediction(question)
         results.append({"prediction": answer.strip()})
 
-    with open("your_output.json", "w") as f:
+    with open("your_output.json", "w") as f: # SAVE THE OUTPUTS IN YOUR RESPECTIVE NUMBERED FILE (eg: your_output_2.json)
         json.dump(results, f, indent=2)
 
     print(f"Saved {len(results)} predictions to your_output.json ✅")
